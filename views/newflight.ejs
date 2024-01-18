@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add New Flight</title>
+</head>
+<body>
+    <form action="/flights" method="POST">
+        <label for="airline">Airline:</label>
+        <input type="text" id="airline" name="airline" required>
+        <label for="airport">Airport:</label>
+        <input type="text" id="airport" name="airport" required>
+        <label for="flightNo">Flight No.:</label>
+        <input type="text" id="flightNo" name="flightNo" required>
+        <label for="departure">Departure:</label>
+        <input type="datetime-local" id="departure" name="departure" required>
+        <button type="submit">Add Flight</button>
+    </form>
+
+    <h1>New Ticket</h1>
+<form action="/flights/<%= flightId %>/tickets" method="post">
+    <label for="seat">Seat:</label>
+    <input type="text" id="seat" name="seat" required pattern="[A-F][1-9]\d?">
+    <label for="price">Price:</label>
+    <input type="number" id="price" name="price" min="0">
+    <button type="submit">Create Ticket</button>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<%- include('partials/header') %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flights</title>
+</head>
+<body>
+    <h1><%= flight.airline %> <%= flight.flightNo %></h1>
+    <p>Departs: <%= flight.departs %></p>
+    <p>Airport: <%= flight.airport %></p>
+    
+    <h2>Destinations</h2>
+    <% flight.destinations.forEach(destination => { %>
+        <p>
+            <%= destination.airport %> <%= destination.arrival %>
+        </p>
+    <% }) %>
+    <h2>Tickets</h2>
+<% tickets.forEach(ticket => { %>
+    <p>
+        <%= ticket.seat %> <%= ticket.price %>
+    </p>
+<% }) %>
+    <h2>Add a Destination</h2>
+    <form action="/flights/<%= flight._id %>/destinations" method="post">
+        <label for="airport">Airport:</label>
+        <select name="airport" id="airport">
+            <option value="AUS">AUS</option>
+            <option value="DFW">DFW</option>
+            <option value="DEN">DEN</option>
+            <option value="LAX">LAX</option>
+            <option value="SAN">SAN</option>
+        </select>
+        <label for="arrival">Arrival:</label>
+        <input type="datetime-local" id="arrival" name="arrival">
+        <button type="submit">Add Destination</button>
+    </form>
+</body>
+</html>
+
+<%- include('partials/footer') %>
